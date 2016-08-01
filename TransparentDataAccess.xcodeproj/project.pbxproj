@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C3436C31D4FCFD0000EBC28 /* TwitterAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C21D4FCFD0000EBC28 /* TwitterAccessToken.swift */; };
 		1C3436C51D4FDCD1000EBC28 /* MoyaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */; };
-		1C3436C71D4FDF34000EBC28 /* GatewayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C61D4FDF34000EBC28 /* GatewayError.swift */; };
-		1C3436C91D4FE96C000EBC28 /* KeychainGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C81D4FE96C000EBC28 /* KeychainGateway.swift */; };
-		1C3436CB1D4FE9A0000EBC28 /* LocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CA1D4FE9A0000EBC28 /* LocalGateway.swift */; };
 		1C3436CD1D4FEA24000EBC28 /* KeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CC1D4FEA24000EBC28 /* KeychainGatewayTest.swift */; };
+		1C3436D61D4FECCE000EBC28 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CF1D4FECCE000EBC28 /* Gateway.swift */; };
+		1C3436D71D4FECCE000EBC28 /* GatewayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D01D4FECCE000EBC28 /* GatewayError.swift */; };
+		1C3436D81D4FECCE000EBC28 /* KeychainGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */; };
+		1C3436D91D4FECCE000EBC28 /* LocalGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D21D4FECCE000EBC28 /* LocalGateway.swift */; };
+		1C3436DA1D4FECCE000EBC28 /* SimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D41D4FECCE000EBC28 /* SimpleModel.swift */; };
+		1C3436DB1D4FECCE000EBC28 /* TwitterAccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D51D4FECCE000EBC28 /* TwitterAccessToken.swift */; };
 		1CC55E111D4FA01400925E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E101D4FA01400925E6A /* AppDelegate.swift */; };
 		1CC55E131D4FA01400925E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E121D4FA01400925E6A /* ViewController.swift */; };
 		1CC55E161D4FA01400925E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E141D4FA01400925E6A /* Main.storyboard */; };
 		1CC55E181D4FA01400925E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E171D4FA01400925E6A /* Assets.xcassets */; };
 		1CC55E1B1D4FA01400925E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E191D4FA01400925E6A /* LaunchScreen.storyboard */; };
 		1CC55E261D4FA01400925E6A /* LocalGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E251D4FA01400925E6A /* LocalGatewayTest.swift */; };
-		1CC55E311D4FA01D00925E6A /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E301D4FA01D00925E6A /* Gateway.swift */; };
-		1CC55E331D4FAB4500925E6A /* SimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E321D4FAB4500925E6A /* SimpleModel.swift */; };
 		68E5F1794CCFC06125697213 /* Pods_TransparentDataAccessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CA9CF08E4E8E70ADCEC774 /* Pods_TransparentDataAccessTests.framework */; };
 		F9049680F277E4D52D177F4C /* Pods_TransparentDataAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA6306E3290E23A5549597 /* Pods_TransparentDataAccess.framework */; };
 /* End PBXBuildFile section */
@@ -37,12 +37,14 @@
 
 /* Begin PBXFileReference section */
 		13FEDF1D6153BF1EDF5AC28A /* Pods-TransparentDataAccess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransparentDataAccess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransparentDataAccess/Pods-TransparentDataAccess.debug.xcconfig"; sourceTree = "<group>"; };
-		1C3436C21D4FCFD0000EBC28 /* TwitterAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAccessToken.swift; sourceTree = "<group>"; };
 		1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaExtension.swift; sourceTree = "<group>"; };
-		1C3436C61D4FDF34000EBC28 /* GatewayError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayError.swift; sourceTree = "<group>"; };
-		1C3436C81D4FE96C000EBC28 /* KeychainGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGateway.swift; sourceTree = "<group>"; };
-		1C3436CA1D4FE9A0000EBC28 /* LocalGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalGateway.swift; sourceTree = "<group>"; };
 		1C3436CC1D4FEA24000EBC28 /* KeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGatewayTest.swift; sourceTree = "<group>"; };
+		1C3436CF1D4FECCE000EBC28 /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
+		1C3436D01D4FECCE000EBC28 /* GatewayError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayError.swift; sourceTree = "<group>"; };
+		1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGateway.swift; sourceTree = "<group>"; };
+		1C3436D21D4FECCE000EBC28 /* LocalGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalGateway.swift; sourceTree = "<group>"; };
+		1C3436D41D4FECCE000EBC28 /* SimpleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleModel.swift; sourceTree = "<group>"; };
+		1C3436D51D4FECCE000EBC28 /* TwitterAccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAccessToken.swift; sourceTree = "<group>"; };
 		1CC55E0D1D4FA01400925E6A /* TransparentDataAccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransparentDataAccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC55E101D4FA01400925E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC55E121D4FA01400925E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,8 +55,6 @@
 		1CC55E211D4FA01400925E6A /* TransparentDataAccessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransparentDataAccessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC55E251D4FA01400925E6A /* LocalGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGatewayTest.swift; sourceTree = "<group>"; };
 		1CC55E271D4FA01400925E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CC55E301D4FA01D00925E6A /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
-		1CC55E321D4FAB4500925E6A /* SimpleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleModel.swift; sourceTree = "<group>"; };
 		22CA9CF08E4E8E70ADCEC774 /* Pods_TransparentDataAccessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransparentDataAccessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BA6306E3290E23A5549597 /* Pods_TransparentDataAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransparentDataAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93778BA95025069296D67915 /* Pods-TransparentDataAccessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransparentDataAccessTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TransparentDataAccessTests/Pods-TransparentDataAccessTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -82,6 +82,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C3436CE1D4FECCE000EBC28 /* Gateway */ = {
+			isa = PBXGroup;
+			children = (
+				1C3436CF1D4FECCE000EBC28 /* Gateway.swift */,
+				1C3436D01D4FECCE000EBC28 /* GatewayError.swift */,
+				1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */,
+				1C3436D21D4FECCE000EBC28 /* LocalGateway.swift */,
+			);
+			path = Gateway;
+			sourceTree = "<group>";
+		};
+		1C3436D31D4FECCE000EBC28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C3436D41D4FECCE000EBC28 /* SimpleModel.swift */,
+				1C3436D51D4FECCE000EBC28 /* TwitterAccessToken.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1CC55E041D4FA01400925E6A = {
 			isa = PBXGroup;
 			children = (
@@ -105,19 +125,15 @@
 		1CC55E0F1D4FA01400925E6A /* TransparentDataAccess */ = {
 			isa = PBXGroup;
 			children = (
+				1C3436CE1D4FECCE000EBC28 /* Gateway */,
+				1C3436D31D4FECCE000EBC28 /* Model */,
 				1CC55E101D4FA01400925E6A /* AppDelegate.swift */,
 				1CC55E121D4FA01400925E6A /* ViewController.swift */,
 				1CC55E141D4FA01400925E6A /* Main.storyboard */,
 				1CC55E171D4FA01400925E6A /* Assets.xcassets */,
 				1CC55E191D4FA01400925E6A /* LaunchScreen.storyboard */,
 				1CC55E1C1D4FA01400925E6A /* Info.plist */,
-				1CC55E321D4FAB4500925E6A /* SimpleModel.swift */,
-				1C3436C21D4FCFD0000EBC28 /* TwitterAccessToken.swift */,
-				1C3436C61D4FDF34000EBC28 /* GatewayError.swift */,
-				1CC55E301D4FA01D00925E6A /* Gateway.swift */,
 				1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */,
-				1C3436C81D4FE96C000EBC28 /* KeychainGateway.swift */,
-				1C3436CA1D4FE9A0000EBC28 /* LocalGateway.swift */,
 			);
 			path = TransparentDataAccess;
 			sourceTree = "<group>";
@@ -353,14 +369,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC55E131D4FA01400925E6A /* ViewController.swift in Sources */,
-				1CC55E311D4FA01D00925E6A /* Gateway.swift in Sources */,
-				1C3436C71D4FDF34000EBC28 /* GatewayError.swift in Sources */,
-				1C3436C31D4FCFD0000EBC28 /* TwitterAccessToken.swift in Sources */,
+				1C3436D71D4FECCE000EBC28 /* GatewayError.swift in Sources */,
+				1C3436D91D4FECCE000EBC28 /* LocalGateway.swift in Sources */,
+				1C3436D61D4FECCE000EBC28 /* Gateway.swift in Sources */,
+				1C3436DB1D4FECCE000EBC28 /* TwitterAccessToken.swift in Sources */,
+				1C3436DA1D4FECCE000EBC28 /* SimpleModel.swift in Sources */,
+				1C3436D81D4FECCE000EBC28 /* KeychainGateway.swift in Sources */,
 				1C3436C51D4FDCD1000EBC28 /* MoyaExtension.swift in Sources */,
 				1CC55E111D4FA01400925E6A /* AppDelegate.swift in Sources */,
-				1C3436CB1D4FE9A0000EBC28 /* LocalGateway.swift in Sources */,
-				1C3436C91D4FE96C000EBC28 /* KeychainGateway.swift in Sources */,
-				1CC55E331D4FAB4500925E6A /* SimpleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
