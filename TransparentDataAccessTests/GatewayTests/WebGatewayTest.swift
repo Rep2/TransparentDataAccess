@@ -28,7 +28,7 @@ class WebGatewayTest: XCTestCase {
     func test_UserProfile_SuccessfulRequest(){
         let target = GitHub.UserProfile("Rep2")
         var recievedModel: UserProfile?
-        let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider.init(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)]))
+        let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider())
         
         waitUntil(timeout: 30, action: { done in
             _ = gateway.getResource(target).subscribeNext{ (model) in
@@ -43,7 +43,7 @@ class WebGatewayTest: XCTestCase {
     func test_UserProfile_NoUserError(){
         let target = GitHub.UserProfile("Rep2123121")
         var recievedError: WebRequestError?
-        let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider.init(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)]))
+        let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider())
         
         waitUntil(timeout: 30, action: { done in
             _ = gateway.getResource(target).subscribeError{ (error) in

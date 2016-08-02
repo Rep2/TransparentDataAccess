@@ -85,6 +85,4 @@ class CompositeLocalAndWebGatewayTest: XCTestCase{
         
         expect(recievedProfile).toNot(beNil())
     }
-    
-    
 }

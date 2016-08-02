@@ -15,6 +15,7 @@
 		1C1EAD781D50BD8100A18F5C /* KeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */; };
 		1C1EAD791D50BD8100A18F5C /* LocalGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */; };
 		1C1EAD7A1D50BD8100A18F5C /* WebGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */; };
+		1C1EAD7C1D50C0B100A18F5C /* CompositSetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD7B1D50C0B100A18F5C /* CompositSetTest.swift */; };
 		1C3436C51D4FDCD1000EBC28 /* MoyaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */; };
 		1C3436D61D4FECCE000EBC28 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CF1D4FECCE000EBC28 /* Gateway.swift */; };
 		1C3436D71D4FECCE000EBC28 /* GatewayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D01D4FECCE000EBC28 /* GatewayError.swift */; };
@@ -57,6 +58,7 @@
 		1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGatewayTest.swift; sourceTree = "<group>"; };
 		1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalGatewayTest.swift; sourceTree = "<group>"; };
 		1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGatewayTest.swift; sourceTree = "<group>"; };
+		1C1EAD7B1D50C0B100A18F5C /* CompositSetTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositSetTest.swift; sourceTree = "<group>"; };
 		1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaExtension.swift; sourceTree = "<group>"; };
 		1C3436CF1D4FECCE000EBC28 /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
 		1C3436D01D4FECCE000EBC28 /* GatewayError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayError.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				1C1EAD6C1D50BD8100A18F5C /* CompositErrorsTest.swift */,
 				1C1EAD6D1D50BD8100A18F5C /* CompositGatewayResultTest.swift */,
 				1C1EAD6E1D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift */,
+				1C1EAD7B1D50C0B100A18F5C /* CompositSetTest.swift */,
 			);
 			path = CompositTests;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C1EAD751D50BD8100A18F5C /* CompositErrorsTest.swift in Sources */,
+				1C1EAD7C1D50C0B100A18F5C /* CompositSetTest.swift in Sources */,
 				1C1EAD771D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */,
 				1C1EAD781D50BD8100A18F5C /* KeychainGatewayTest.swift in Sources */,
 				1C1EAD741D50BD8100A18F5C /* CompositeLocalAndWebTest.swift in Sources */,
