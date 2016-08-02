@@ -19,4 +19,10 @@ struct UserProfile: Unboxable{
         self.email = unboxer.unbox("email")
         self.login = unboxer.unbox("login")
     }
+    
+    init(){
+        self.name = "name"
+        self.email = "email"
+        self.login = "login"
+    }
 }
