@@ -71,5 +71,4 @@ class CompositLocalAndKeychainGatewayTest: XCTestCase{
         
         expect(recievedToken).toNot(beNil())
     }
-    
 }

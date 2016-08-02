@@ -86,5 +86,4 @@ class KeychainGatewayTest: XCTestCase {
         expect(recievedModel).toNot(beNil())
         expect(recievedModel!.token).to(equal(testModel.token))
     }
-    
 }

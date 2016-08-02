@@ -92,6 +92,4 @@ class CompositeErrorsTest: XCTestCase{
         
         expect(recievedError).to(equal(WebRequestError.HTTPError(code: 400)))
     }
-    
-    
 }

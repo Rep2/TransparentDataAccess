@@ -13,16 +13,6 @@ import RxSwift
 import Moya
 @testable import TransparentDataAccess
 
-private func JSONResponseDataFormatter(data: NSData) -> NSData {
-    do {
-        let dataAsJSON = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-        let prettyData =  try NSJSONSerialization.dataWithJSONObject(dataAsJSON, options: .PrettyPrinted)
-        return prettyData
-    } catch {
-        return data //fallback to original data if it cant be serialized
-    }
-}
-
 class WebGatewayTest: XCTestCase {
     
     func test_UserProfile_SuccessfulRequest(){
@@ -101,5 +91,4 @@ class WebGatewayTest: XCTestCase {
         
         expect(recievedError).to(equal(WebRequestError.HTTPError(code: 401)))
     }
-    
 }

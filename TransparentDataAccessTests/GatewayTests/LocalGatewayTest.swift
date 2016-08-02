@@ -97,5 +97,4 @@ class LocalGatewayTest: XCTestCase {
         expect(recievedModel).toNot(beNil())
         expect(recievedModel!.token).to(equal(testModel.token))
     }
-    
 }
