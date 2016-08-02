@@ -18,10 +18,14 @@ class CompositGateway<R, T: ResourceType>: GetGateway<R, T>{
     }
     
     override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
-        return gateways.map { (gateway) -> Observable<R> in
+        return gateways.enumerate().map { (index, gateway) -> Observable<R> in
             return Observable.deferred({
                 return gateway.getResource(resourceType).catchError({ (error) -> Observable<R> in
-                    return Observable.empty()
+                    if index == (self.gateways.count - 1){
+                        return Observable.error(error)
+                    }else{
+                        return Observable.empty()
+                    }
                 }).observeOn(MainScheduler.instance)
             })
             }

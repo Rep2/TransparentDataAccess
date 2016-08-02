@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C1EAD641D50B5A900A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD631D50B5A900A18F5C /* CompositLocalAndKeychainGatewayTest.swift */; };
-		1C1EAD661D50B69B00A18F5C /* CompositeLocalAndWebTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD651D50B69B00A18F5C /* CompositeLocalAndWebTest.swift */; };
+		1C1EAD731D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD6A1D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift */; };
+		1C1EAD741D50BD8100A18F5C /* CompositeLocalAndWebTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD6B1D50BD8100A18F5C /* CompositeLocalAndWebTest.swift */; };
+		1C1EAD751D50BD8100A18F5C /* CompositErrorsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD6C1D50BD8100A18F5C /* CompositErrorsTest.swift */; };
+		1C1EAD761D50BD8100A18F5C /* CompositGatewayResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD6D1D50BD8100A18F5C /* CompositGatewayResultTest.swift */; };
+		1C1EAD771D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD6E1D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift */; };
+		1C1EAD781D50BD8100A18F5C /* KeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */; };
+		1C1EAD791D50BD8100A18F5C /* LocalGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */; };
+		1C1EAD7A1D50BD8100A18F5C /* WebGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */; };
 		1C3436C51D4FDCD1000EBC28 /* MoyaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */; };
-		1C3436CD1D4FEA24000EBC28 /* KeychainGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CC1D4FEA24000EBC28 /* KeychainGatewayTest.swift */; };
 		1C3436D61D4FECCE000EBC28 /* Gateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436CF1D4FECCE000EBC28 /* Gateway.swift */; };
 		1C3436D71D4FECCE000EBC28 /* GatewayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D01D4FECCE000EBC28 /* GatewayError.swift */; };
 		1C3436D81D4FECCE000EBC28 /* KeychainGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */; };
@@ -20,18 +25,14 @@
 		1C3436DD1D4FEDD9000EBC28 /* WebGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436DC1D4FEDD9000EBC28 /* WebGateway.swift */; };
 		1C3436DF1D4FF3D3000EBC28 /* ResourceMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436DE1D4FF3D3000EBC28 /* ResourceMapper.swift */; };
 		1C3436E11D500379000EBC28 /* GitHubTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436E01D500379000EBC28 /* GitHubTarget.swift */; };
-		1C3436E31D5003CD000EBC28 /* WebGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436E21D5003CD000EBC28 /* WebGatewayTest.swift */; };
 		1C8429F71D5085970025530A /* GitHubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F61D5085970025530A /* GitHubModels.swift */; };
 		1C8429F91D5097090025530A /* ResourceTypeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F81D5097090025530A /* ResourceTypeExample.swift */; };
 		1C8429FB1D50985D0025530A /* CompositGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429FA1D50985D0025530A /* CompositGateway.swift */; };
-		1C8429FD1D509B550025530A /* CompositGatewayResultTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429FC1D509B550025530A /* CompositGatewayResultTest.swift */; };
-		1C8429FF1D509EE40025530A /* CompositeGatewayNumberOfCallsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429FE1D509EE40025530A /* CompositeGatewayNumberOfCallsTest.swift */; };
 		1CC55E111D4FA01400925E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E101D4FA01400925E6A /* AppDelegate.swift */; };
 		1CC55E131D4FA01400925E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E121D4FA01400925E6A /* ViewController.swift */; };
 		1CC55E161D4FA01400925E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E141D4FA01400925E6A /* Main.storyboard */; };
 		1CC55E181D4FA01400925E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E171D4FA01400925E6A /* Assets.xcassets */; };
 		1CC55E1B1D4FA01400925E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E191D4FA01400925E6A /* LaunchScreen.storyboard */; };
-		1CC55E261D4FA01400925E6A /* LocalGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E251D4FA01400925E6A /* LocalGatewayTest.swift */; };
 		68E5F1794CCFC06125697213 /* Pods_TransparentDataAccessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22CA9CF08E4E8E70ADCEC774 /* Pods_TransparentDataAccessTests.framework */; };
 		F9049680F277E4D52D177F4C /* Pods_TransparentDataAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA6306E3290E23A5549597 /* Pods_TransparentDataAccess.framework */; };
 /* End PBXBuildFile section */
@@ -48,10 +49,15 @@
 
 /* Begin PBXFileReference section */
 		13FEDF1D6153BF1EDF5AC28A /* Pods-TransparentDataAccess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TransparentDataAccess.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TransparentDataAccess/Pods-TransparentDataAccess.debug.xcconfig"; sourceTree = "<group>"; };
-		1C1EAD631D50B5A900A18F5C /* CompositLocalAndKeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositLocalAndKeychainGatewayTest.swift; sourceTree = "<group>"; };
-		1C1EAD651D50B69B00A18F5C /* CompositeLocalAndWebTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeLocalAndWebTest.swift; sourceTree = "<group>"; };
+		1C1EAD6A1D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeGatewayNumberOfCallsTest.swift; sourceTree = "<group>"; };
+		1C1EAD6B1D50BD8100A18F5C /* CompositeLocalAndWebTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeLocalAndWebTest.swift; sourceTree = "<group>"; };
+		1C1EAD6C1D50BD8100A18F5C /* CompositErrorsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositErrorsTest.swift; sourceTree = "<group>"; };
+		1C1EAD6D1D50BD8100A18F5C /* CompositGatewayResultTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositGatewayResultTest.swift; sourceTree = "<group>"; };
+		1C1EAD6E1D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositLocalAndKeychainGatewayTest.swift; sourceTree = "<group>"; };
+		1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGatewayTest.swift; sourceTree = "<group>"; };
+		1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalGatewayTest.swift; sourceTree = "<group>"; };
+		1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGatewayTest.swift; sourceTree = "<group>"; };
 		1C3436C41D4FDCD1000EBC28 /* MoyaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoyaExtension.swift; sourceTree = "<group>"; };
-		1C3436CC1D4FEA24000EBC28 /* KeychainGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGatewayTest.swift; sourceTree = "<group>"; };
 		1C3436CF1D4FECCE000EBC28 /* Gateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gateway.swift; sourceTree = "<group>"; };
 		1C3436D01D4FECCE000EBC28 /* GatewayError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GatewayError.swift; sourceTree = "<group>"; };
 		1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainGateway.swift; sourceTree = "<group>"; };
@@ -61,12 +67,9 @@
 		1C3436DC1D4FEDD9000EBC28 /* WebGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGateway.swift; sourceTree = "<group>"; };
 		1C3436DE1D4FF3D3000EBC28 /* ResourceMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceMapper.swift; sourceTree = "<group>"; };
 		1C3436E01D500379000EBC28 /* GitHubTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubTarget.swift; sourceTree = "<group>"; };
-		1C3436E21D5003CD000EBC28 /* WebGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGatewayTest.swift; sourceTree = "<group>"; };
 		1C8429F61D5085970025530A /* GitHubModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubModels.swift; sourceTree = "<group>"; };
 		1C8429F81D5097090025530A /* ResourceTypeExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTypeExample.swift; sourceTree = "<group>"; };
 		1C8429FA1D50985D0025530A /* CompositGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositGateway.swift; sourceTree = "<group>"; };
-		1C8429FC1D509B550025530A /* CompositGatewayResultTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositGatewayResultTest.swift; sourceTree = "<group>"; };
-		1C8429FE1D509EE40025530A /* CompositeGatewayNumberOfCallsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeGatewayNumberOfCallsTest.swift; sourceTree = "<group>"; };
 		1CC55E0D1D4FA01400925E6A /* TransparentDataAccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransparentDataAccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC55E101D4FA01400925E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC55E121D4FA01400925E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +78,6 @@
 		1CC55E1A1D4FA01400925E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CC55E1C1D4FA01400925E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC55E211D4FA01400925E6A /* TransparentDataAccessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransparentDataAccessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CC55E251D4FA01400925E6A /* LocalGatewayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalGatewayTest.swift; sourceTree = "<group>"; };
 		1CC55E271D4FA01400925E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22CA9CF08E4E8E70ADCEC774 /* Pods_TransparentDataAccessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransparentDataAccessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BA6306E3290E23A5549597 /* Pods_TransparentDataAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TransparentDataAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C1EAD691D50BD8100A18F5C /* CompositTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C1EAD6A1D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift */,
+				1C1EAD6B1D50BD8100A18F5C /* CompositeLocalAndWebTest.swift */,
+				1C1EAD6C1D50BD8100A18F5C /* CompositErrorsTest.swift */,
+				1C1EAD6D1D50BD8100A18F5C /* CompositGatewayResultTest.swift */,
+				1C1EAD6E1D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift */,
+			);
+			path = CompositTests;
+			sourceTree = "<group>";
+		};
+		1C1EAD6F1D50BD8100A18F5C /* GatewayTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */,
+				1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */,
+				1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */,
+			);
+			path = GatewayTests;
+			sourceTree = "<group>";
+		};
 		1C3436CE1D4FECCE000EBC28 /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +136,8 @@
 				1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */,
 				1C3436D21D4FECCE000EBC28 /* LocalGateway.swift */,
 				1C3436DC1D4FEDD9000EBC28 /* WebGateway.swift */,
-				1C3436DE1D4FF3D3000EBC28 /* ResourceMapper.swift */,
 				1C8429FA1D50985D0025530A /* CompositGateway.swift */,
+				1C3436DE1D4FF3D3000EBC28 /* ResourceMapper.swift */,
 			);
 			path = Gateway;
 			sourceTree = "<group>";
@@ -169,14 +193,9 @@
 		1CC55E241D4FA01400925E6A /* TransparentDataAccessTests */ = {
 			isa = PBXGroup;
 			children = (
-				1CC55E251D4FA01400925E6A /* LocalGatewayTest.swift */,
-				1C3436CC1D4FEA24000EBC28 /* KeychainGatewayTest.swift */,
-				1C3436E21D5003CD000EBC28 /* WebGatewayTest.swift */,
+				1C1EAD691D50BD8100A18F5C /* CompositTests */,
+				1C1EAD6F1D50BD8100A18F5C /* GatewayTests */,
 				1CC55E271D4FA01400925E6A /* Info.plist */,
-				1C8429FC1D509B550025530A /* CompositGatewayResultTest.swift */,
-				1C8429FE1D509EE40025530A /* CompositeGatewayNumberOfCallsTest.swift */,
-				1C1EAD631D50B5A900A18F5C /* CompositLocalAndKeychainGatewayTest.swift */,
-				1C1EAD651D50B69B00A18F5C /* CompositeLocalAndWebTest.swift */,
 			);
 			path = TransparentDataAccessTests;
 			sourceTree = "<group>";
@@ -423,13 +442,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C1EAD661D50B69B00A18F5C /* CompositeLocalAndWebTest.swift in Sources */,
-				1C8429FD1D509B550025530A /* CompositGatewayResultTest.swift in Sources */,
-				1C3436E31D5003CD000EBC28 /* WebGatewayTest.swift in Sources */,
-				1C3436CD1D4FEA24000EBC28 /* KeychainGatewayTest.swift in Sources */,
-				1C8429FF1D509EE40025530A /* CompositeGatewayNumberOfCallsTest.swift in Sources */,
-				1CC55E261D4FA01400925E6A /* LocalGatewayTest.swift in Sources */,
-				1C1EAD641D50B5A900A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */,
+				1C1EAD751D50BD8100A18F5C /* CompositErrorsTest.swift in Sources */,
+				1C1EAD771D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */,
+				1C1EAD781D50BD8100A18F5C /* KeychainGatewayTest.swift in Sources */,
+				1C1EAD741D50BD8100A18F5C /* CompositeLocalAndWebTest.swift in Sources */,
+				1C1EAD761D50BD8100A18F5C /* CompositGatewayResultTest.swift in Sources */,
+				1C1EAD731D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift in Sources */,
+				1C1EAD791D50BD8100A18F5C /* LocalGatewayTest.swift in Sources */,
+				1C1EAD7A1D50BD8100A18F5C /* WebGatewayTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
