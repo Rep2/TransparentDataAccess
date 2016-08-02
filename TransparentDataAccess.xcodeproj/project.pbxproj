@@ -20,6 +20,7 @@
 		1C3436E11D500379000EBC28 /* GitHubTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436E01D500379000EBC28 /* GitHubTarget.swift */; };
 		1C3436E31D5003CD000EBC28 /* WebGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3436E21D5003CD000EBC28 /* WebGatewayTest.swift */; };
 		1C8429F71D5085970025530A /* GitHubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F61D5085970025530A /* GitHubModels.swift */; };
+		1C8429F91D5097090025530A /* ResourceTypeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F81D5097090025530A /* ResourceTypeExample.swift */; };
 		1CC55E111D4FA01400925E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E101D4FA01400925E6A /* AppDelegate.swift */; };
 		1CC55E131D4FA01400925E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC55E121D4FA01400925E6A /* ViewController.swift */; };
 		1CC55E161D4FA01400925E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC55E141D4FA01400925E6A /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		1C3436E01D500379000EBC28 /* GitHubTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubTarget.swift; sourceTree = "<group>"; };
 		1C3436E21D5003CD000EBC28 /* WebGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGatewayTest.swift; sourceTree = "<group>"; };
 		1C8429F61D5085970025530A /* GitHubModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubModels.swift; sourceTree = "<group>"; };
+		1C8429F81D5097090025530A /* ResourceTypeExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTypeExample.swift; sourceTree = "<group>"; };
 		1CC55E0D1D4FA01400925E6A /* TransparentDataAccess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransparentDataAccess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC55E101D4FA01400925E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC55E121D4FA01400925E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,8 +97,8 @@
 		1C3436CE1D4FECCE000EBC28 /* Gateway */ = {
 			isa = PBXGroup;
 			children = (
-				1C3436CF1D4FECCE000EBC28 /* Gateway.swift */,
 				1C3436D01D4FECCE000EBC28 /* GatewayError.swift */,
+				1C3436CF1D4FECCE000EBC28 /* Gateway.swift */,
 				1C3436D11D4FECCE000EBC28 /* KeychainGateway.swift */,
 				1C3436D21D4FECCE000EBC28 /* LocalGateway.swift */,
 				1C3436DC1D4FEDD9000EBC28 /* WebGateway.swift */,
@@ -112,6 +114,7 @@
 				1C3436D51D4FECCE000EBC28 /* TwitterAccessToken.swift */,
 				1C3436E01D500379000EBC28 /* GitHubTarget.swift */,
 				1C8429F61D5085970025530A /* GitHubModels.swift */,
+				1C8429F81D5097090025530A /* ResourceTypeExample.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				1C3436D81D4FECCE000EBC28 /* KeychainGateway.swift in Sources */,
 				1C3436C51D4FDCD1000EBC28 /* MoyaExtension.swift in Sources */,
 				1C3436DF1D4FF3D3000EBC28 /* ResourceMapper.swift in Sources */,
+				1C8429F91D5097090025530A /* ResourceTypeExample.swift in Sources */,
 				1CC55E111D4FA01400925E6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

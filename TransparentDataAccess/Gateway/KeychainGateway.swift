@@ -19,10 +19,10 @@ protocol Keychainable{
 let keychainServiceString = "undabot.TransparentDataAccess"
 let keychain = Keychain(service: keychainServiceString)
 
-class KeychainGateway<R: Keychainable>: GetGateway<R>{
+class KeychainGateway<R: Keychainable, T: ResourceType>: GetSetGateway<R, T>{
     private let keychainKey = "TwitterAccessToken"
     
-    override func getResource(resourceType: ResourceTargetExample<R>, forceRefresh: Bool = false) -> Observable<R>{
+    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R>{
         let resourceString = keychain[resourceType.key]
         
         if resourceString != nil && !forceRefresh{
@@ -32,7 +32,7 @@ class KeychainGateway<R: Keychainable>: GetGateway<R>{
         }
     }
     
-    func setResource(resourceType: ResourceTargetExample<R>, resource: R){
+    override func setResource(resourceType: T, resource: R){
         keychain[resourceType.key] = resource.toString()
     }
 }

@@ -10,28 +10,44 @@ import RxSwift
 import Unbox
 import Moya
 
-protocol ResourceTarget{
-    var key: String { get }
+
+protocol ResourceType: TargetType, StorableType{
 }
 
-enum ResourceTargetExample<R>{
-    case EmptyTarget
-    case Token(key: String, secret: String)
-}
-
-extension ResourceTargetExample: ResourceTarget{
+extension ResourceType{
+    var baseURL: NSURL { return NSURL(string: "")! }
+    var path: String{
+        return ""
+    }
+    var method: Moya.Method {
+        return .GET
+    }
+    var parameters: [String: AnyObject]? {
+        return nil
+    }
+    var multipartBody: [MultipartFormData]?{
+        return nil
+    }
+    var sampleData: NSData {
+        return "".dataUsingEncoding(NSUTF8StringEncoding)!
+    }
+    
     var key: String{
-        switch self {
-        case .EmptyTarget:
-            return ""
-        case .Token(let key, let secret):
-            return key + "_" + secret
-        }
+        return ""
     }
 }
 
-class GetGateway<R>{
-    func getResource(resourceType: ResourceTargetExample<R>, forceRefresh: Bool = false) -> Observable<R>{
+protocol StorableType{
+    var key: String { get }
+}
+
+class GetGateway<R, T: ResourceType>{
+    func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R>{
         return Observable.empty()
+    }
+}
+
+class GetSetGateway<R, T: ResourceType>: GetGateway<R, T>{
+    func setResource(resourceType: T, resource: R){
     }
 }

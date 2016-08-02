@@ -30,16 +30,16 @@ func ==(lhs: WebRequestError, rhs: WebRequestError) -> Bool{
     }
 }
 
-class WebGateway<Resource: Unboxable, Target: TargetType>{
-    let provider: RxMoyaProvider<Target>
+class WebGateway<R: Unboxable, T: ResourceType>: GetGateway<R, T>{
+    let provider: RxMoyaProvider<T>
     let mapper: ResourceMapperProtocol
     
-    init(provider: RxMoyaProvider<Target> = RxMoyaProvider<Target>(), mapper: ResourceMapperProtocol = ResourceMapper()){
+    init(provider: RxMoyaProvider<T> = RxMoyaProvider<T>(), mapper: ResourceMapperProtocol = ResourceMapper()){
         self.provider = provider
         self.mapper = mapper
     }
     
-    func getResource(resourceType: Target, forceRefresh: Bool = false) -> Observable<Resource>{
+    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
         return mapper.mapResponse(provider.request(resourceType), tokenRefreshed: forceRefresh)
     }
 }

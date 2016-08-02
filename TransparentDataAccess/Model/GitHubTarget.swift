@@ -14,7 +14,7 @@ public enum GitHub {
     case UserProfile(String)
 }
 
-extension GitHub: TargetType {
+extension GitHub: ResourceType {
     public var baseURL: NSURL { return NSURL(string: "https://api.github.com")! }
     public var path: String {
         switch self {

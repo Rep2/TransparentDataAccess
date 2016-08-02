@@ -15,10 +15,10 @@ import RxSwift
 class KeychainGatewayTest: XCTestCase {
     
     func test_SimpleModel_NoData(){
-        let target = ResourceTargetExample<SimpleModel>.Token(key: "no data", secret: "secret")
+        let target = ResourceTypeExample.Token(key: "no data", secret: "secret")
         var recievedError: GatewayError?
         
-        _ = KeychainGateway().getResource(target).subscribeError { (error) in
+        _ = KeychainGateway<SimpleModel, ResourceTypeExample>().getResource(target).subscribeError { (error) in
             if let error = error as? GatewayError{
                 recievedError = error
             }
@@ -29,12 +29,12 @@ class KeychainGatewayTest: XCTestCase {
     
     func test_SimpleModel_SetResource(){
         let testModel = SimpleModel(data: "New test data")
-        let gateway = KeychainGateway<SimpleModel>()
+        let gateway = KeychainGateway<SimpleModel, ResourceTypeExample>()
         var recievedModel: SimpleModel?
         
-        gateway.setResource(.EmptyTarget, resource: testModel)
+        gateway.setResource(ResourceTypeExample.EmptyTarget, resource: testModel)
         
-        _ = gateway.getResource(.EmptyTarget).subscribeNext { (model) in
+        _ = gateway.getResource(ResourceTypeExample.EmptyTarget).subscribeNext { (model) in
             recievedModel = model
         }
         
@@ -44,13 +44,13 @@ class KeychainGatewayTest: XCTestCase {
     
     func test_Token_GetResource(){
         let testModel = TwitterAccessToken(data: "test token")
-        let target = ResourceTargetExample<TwitterAccessToken>.Token(key: "key", secret: "secret")
+        let target = ResourceTypeExample.Token(key: "key", secret: "secret")
         
         var recievedModel: TwitterAccessToken?
         
         keychain[target.key] = testModel.toString()
         
-        _ = KeychainGateway().getResource(target).subscribeNext { (model) in
+        _ = KeychainGateway<TwitterAccessToken, ResourceTypeExample>().getResource(target).subscribeNext { (model) in
             recievedModel = model
         }
         
@@ -60,9 +60,9 @@ class KeychainGatewayTest: XCTestCase {
     
     func test_Token_NoData(){
         var recievedError: GatewayError?
-        let target = ResourceTargetExample<TwitterAccessToken>.Token(key: "different key", secret: "secret")
+        let target = ResourceTypeExample.Token(key: "different key", secret: "secret")
         
-        _ = KeychainGateway<TwitterAccessToken>().getResource(target).subscribeError { (error) in
+        _ = KeychainGateway<TwitterAccessToken, ResourceTypeExample>().getResource(target).subscribeError { (error) in
             if let error = error as? GatewayError{
                 recievedError = error
             }
@@ -73,8 +73,8 @@ class KeychainGatewayTest: XCTestCase {
     
     func test_Token_SetResource(){
         let testModel = TwitterAccessToken(data: "new token")
-        let target = ResourceTargetExample<TwitterAccessToken>.Token(key: "key", secret: "different secret")
-        let gateway = KeychainGateway<TwitterAccessToken>()
+        let target = ResourceTypeExample.Token(key: "key", secret: "different secret")
+        let gateway = KeychainGateway<TwitterAccessToken, ResourceTypeExample>()
         var recievedModel: TwitterAccessToken?
         
         gateway.setResource(target, resource: testModel)
