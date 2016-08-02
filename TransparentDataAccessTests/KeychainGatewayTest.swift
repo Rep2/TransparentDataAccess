@@ -15,7 +15,7 @@ import RxSwift
 class KeychainGatewayTest: XCTestCase {
     
     func test_SimpleModel_NoData(){
-        let target = ResourceTargetExample<SimpleModel>.EmptyTarget
+        let target = ResourceTargetExample<SimpleModel>.Token(key: "no data", secret: "secret")
         var recievedError: GatewayError?
         
         _ = KeychainGateway().getResource(target).subscribeError { (error) in
