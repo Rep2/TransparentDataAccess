@@ -18,6 +18,8 @@ class CompositGateway<R, T: ResourceType>: GetGateway<R, T>{
     }
     
     override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
+        let currentThread = CurrentThreadScheduler.instance
+        
         return gateways.enumerate().map { (index, gateway) -> Observable<R> in
             return Observable.deferred({
                 return gateway.getResource(resourceType)
@@ -34,11 +36,11 @@ class CompositGateway<R, T: ResourceType>: GetGateway<R, T>{
                         }else{
                             return Observable.empty()
                         }
-                }).observeOn(MainScheduler.instance)
+                }).observeOn(currentThread)
             })
             }
             .concat()
-            .observeOn(MainScheduler.instance)
+            .observeOn(currentThread)
             .take(1)
     }
     

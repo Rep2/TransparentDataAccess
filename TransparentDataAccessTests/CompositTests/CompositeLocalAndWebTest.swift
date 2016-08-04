@@ -75,7 +75,7 @@ class CompositeLocalAndWebGatewayTest: XCTestCase{
         
         var recievedProfile: UserProfile?
         
-        waitUntil(timeout: 10, action: { done in
+        waitUntil(timeout: 30, action: { done in
             _ = compositGateway.getResource(type)
                 .subscribeNext { (profile) in
                     recievedProfile = profile

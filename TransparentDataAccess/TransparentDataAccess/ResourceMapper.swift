@@ -11,14 +11,14 @@ import Moya
 import Unbox
 
 protocol ResourceMapperProtocol{
-    func mapResponse<R: Unboxable>(observable: Observable<Response>, tokenRefreshed:Bool) -> Observable<R>
+    func mapResponse<R: Unboxable>(observable: Observable<Response>) -> Observable<R>
 }
 
 class ResourceMapper: ResourceMapperProtocol{
     
     let disposeBag = DisposeBag()
     
-    func mapResponse<R: Unboxable>(observable: Observable<Response>, tokenRefreshed:Bool = false) -> Observable<R>{
+    func mapResponse<R: Unboxable>(observable: Observable<Response>) -> Observable<R>{
         return Observable.create({ (observer) -> Disposable in
             observable.subscribe(
                 onNext: { (response) in

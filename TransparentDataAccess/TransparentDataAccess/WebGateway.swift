@@ -40,6 +40,18 @@ class WebGateway<R: Unboxable, T: ResourceType>: GetGateway<R, T>{
     }
     
     override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
-        return mapper.mapResponse(provider.request(resourceType), tokenRefreshed: forceRefresh)
+        return mapper.mapResponse(provider.request(resourceType)
+            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0))))
+            .catchError({ (error) -> Observable<R> in
+                if let error = error as? WebRequestError{
+                    if error == WebRequestError.HTTPError(code: 401) && !forceRefresh{
+                        // TODO refresh token
+                        
+                        self.getResource(resourceType, forceRefresh: true)
+                    }
+                }
+                
+                return Observable.error(error)
+            })
     }
 }
