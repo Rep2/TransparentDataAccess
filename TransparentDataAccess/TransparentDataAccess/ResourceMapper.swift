@@ -11,19 +11,28 @@ import Moya
 import Unbox
 
 protocol ResourceMapperProtocol{
-    func mapResponse<R: Unboxable>(observable: Observable<Response>) -> Observable<R>
+    func mapResponse<R: Unboxable>(observable: Observable<Response>, refreshesToken: Bool) -> Observable<R>
 }
 
 class ResourceMapper: ResourceMapperProtocol{
     
     let disposeBag = DisposeBag()
     
-    func mapResponse<R: Unboxable>(observable: Observable<Response>) -> Observable<R>{
-        return Observable.create({ (observer) -> Disposable in
-            observable.subscribe(
-                onNext: { (response) in
+    func mapResponse<R: Unboxable>(observable: Observable<Response>, refreshesToken: Bool = true) -> Observable<R>{
+        return observable
+            .flatMap { (response) -> Observable<R> in
+                return Observable.create({ (observer) -> Disposable in
                     if response.statusCode < 200 || response.statusCode >= 300{
-                        observer.onError(WebRequestError.HTTPError(code: response.statusCode))
+                        
+                        // If status code is 401 and refreshesToken is disabled return PermisionDenied error
+                        if response.statusCode == 401 && !refreshesToken{
+                            observer.onError(WebRequestError.PermissionDenied)
+                        }
+                            // Else propagate error
+                        else{
+                            observer.onError(WebRequestError.HTTPError(code: response.statusCode))
+                        }
+                        
                     }else{
                         do{
                             let resource: R = try Unbox(response.data)
@@ -34,15 +43,10 @@ class ResourceMapper: ResourceMapperProtocol{
                             observer.onError(WebRequestError.UnboxingError)
                         }
                     }
-                }, onError: { (error) in
-                    observer.onError(error)
-                }, onCompleted: {
-                    observer.onCompleted()
-                }
-            ).addDisposableTo(self.disposeBag)
-            
-            
-            return NopDisposable.instance
-        })
+                    
+                    return NopDisposable.instance
+                    }
+                )
+        }
     }
 }

@@ -70,7 +70,7 @@ class WebGatewayTest: XCTestCase {
         expect(recievedError).to(equal(WebRequestError.HTTPError(code: 400)))
     }
     
-    func test_Error_HTTP401(){
+    func test_Error_HTTPPermisionDenied(){
         let target = GitHub.UserProfile("Rep2")
         var recievedError: WebRequestError?
         let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider.init(
@@ -89,6 +89,6 @@ class WebGatewayTest: XCTestCase {
             }
         })
         
-        expect(recievedError).to(equal(WebRequestError.HTTPError(code: 401)))
+        expect(recievedError).to(equal(WebRequestError.PermissionDenied))
     }
 }
