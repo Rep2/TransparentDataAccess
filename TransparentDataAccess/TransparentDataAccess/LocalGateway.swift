@@ -9,24 +9,24 @@
 import Foundation
 import RxSwift
 
-class LocalGateway<R, T: ResourceType>: GetSetGateway<R, T>{
+class LocalGateway<R, T: ResourceType>: GetSetGateway<R, T> {
     var resources: [String : R]
-    
-    init(resources: [String : R] = [:]){
+
+    init(resources: [String : R] = [:]) {
         self.resources = resources
     }
-    
-    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R>{
+
+    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
         let resource = resources[resourceType.key]
-        
-        if  resource != nil && !forceRefresh{
+
+        if  resource != nil && !forceRefresh {
             return Observable.just(resource!)
         } else {
             return Observable.error(GatewayError.NoDataFor(key: resourceType.key))
         }
     }
-    
-    override func setResource(resourceType: T, resource: R){
+
+    override func setResource(resourceType: T, resource: R) {
         resources[resourceType.key] = resource
     }
 }

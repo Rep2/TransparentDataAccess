@@ -9,39 +9,40 @@
 import Foundation
 import RxSwift
 
-class CompositGateway<R, T: ResourceType>: GetGateway<R, T>{
-    
+class CompositGateway<R, T: ResourceType>: GetGateway<R, T> {
+
     var gateways: [GetGateway<R, T>] = []
-    
-    init(gateways: [GetGateway<R, T>] = []){
+
+    init(gateways: [GetGateway<R, T>] = []) {
         self.gateways = gateways
     }
-    
+
     override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
-        let currentThread = CurrentThreadScheduler.instance
-        
+
         return gateways.enumerate().map { (index, gateway) -> Observable<R> in
             return Observable.deferred({
-                return gateway.getResource(resourceType)
+                return gateway.getResource(resourceType, forceRefresh: forceRefresh)
                     .doOnNext({ resource in
-                        for i in 0..<index{
-                            if self.gateways[i] is GetSetGateway{
-                                (self.gateways[i] as! GetSetGateway).setResource(resourceType, resource: resource)
+                        for i in 0..<index {
+                            if self.gateways[i] is GetSetGateway {
+                                if let gateway = self.gateways[i] as? GetSetGateway {
+                                    gateway.setResource(resourceType, resource: resource)
+                                }
                             }
                         }
                     })
                     .catchError({ (error) -> Observable<R> in
-                        if index == (self.gateways.count - 1){
+                        if index == (self.gateways.count - 1) {
                             return Observable.error(error)
-                        }else{
+                        } else {
                             return Observable.empty()
                         }
-                }).observeOn(currentThread)
+                }).observeOn(MainScheduler.instance)
             })
             }
             .concat()
-            .observeOn(currentThread)
+            .observeOn(MainScheduler.instance)
             .take(1)
     }
-    
+
 }
