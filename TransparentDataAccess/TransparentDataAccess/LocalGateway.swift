@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class LocalGateway<R, T: ResourceType>: GetSetGateway<R, T> {
+class LocalGateway<R, T: StorableType>: GetSetGateway<R, T> {
     var resources: [String : R]
 
     init(resources: [String : R] = [:]) {

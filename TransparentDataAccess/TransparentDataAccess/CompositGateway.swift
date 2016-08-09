@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-class CompositGateway<R, T: ResourceType>: GetGateway<R, T> {
+class CompositGateway<R, T: StorableType>: GetGateway<R, T> {
 
     var gateways: [GetGateway<R, T>] = []
 

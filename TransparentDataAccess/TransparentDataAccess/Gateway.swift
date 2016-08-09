@@ -47,13 +47,13 @@ protocol StorableType {
     var key: String { get }
 }
 
-class GetGateway<R, T: ResourceType> {
+class GetGateway<R, T> {
     func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
         return Observable.empty()
     }
 }
 
-class GetSetGateway<R, T: ResourceType>: GetGateway<R, T> {
+class GetSetGateway<R, T: StorableType>: GetGateway<R, T> {
     func setResource(resourceType: T, resource: R) {
     }
 }

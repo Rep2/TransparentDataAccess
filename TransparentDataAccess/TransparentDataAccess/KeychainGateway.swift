@@ -19,7 +19,7 @@ protocol Keychainable {
 let keychainServiceString = "undabot.TransparentDataAccess"
 let keychain = Keychain(service: keychainServiceString)
 
-class KeychainGateway<R: Keychainable, T: ResourceType>: GetSetGateway<R, T> {
+class KeychainGateway<R: Keychainable, T: StorableType>: GetSetGateway<R, T> {
     private let keychainKey = "TwitterAccessToken"
 
     override func getResource(resourceType: T,
