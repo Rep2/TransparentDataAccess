@@ -1,11 +1,3 @@
-//
-//  ResourceMapper.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 01/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
 import RxSwift
 import Moya
 import Unbox
@@ -22,6 +14,7 @@ class ResourceMapper: ResourceMapperProtocol {
     func mapResponse<R: Unboxable>(observable: Observable<Response>,
                      refreshesToken: Bool = true) -> Observable<R> {
         return observable
+            .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
             .flatMap { (response) -> Observable<R> in
                 return Observable.create({ (observer) -> Disposable in
                     if response.statusCode < 200 || response.statusCode >= 300 {

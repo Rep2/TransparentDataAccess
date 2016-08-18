@@ -1,11 +1,3 @@
-//
-//  Gateway.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 01/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
 import RxSwift
 import Unbox
 import Moya
@@ -55,6 +47,16 @@ class GetGateway<R, T> {
 
 class GetSetGateway<R, T: StorableType>: GetGateway<R, T> {
     func setResource(resourceType: T, resource: R) {
+    }
+}
+
+extension String {
+    var URLEscapedString: String {
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(
+            NSCharacterSet.URLHostAllowedCharacterSet())!
+    }
+    var UTF8EncodedData: NSData {
+        return self.dataUsingEncoding(NSUTF8StringEncoding)!
     }
 }
 

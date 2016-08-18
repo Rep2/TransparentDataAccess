@@ -1,12 +1,3 @@
-//
-//  TracksInFlight.swift
-//  EducationalProjectIvanRep
-//
-//  Created by Undabot Rep on 03/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
-import Foundation
 import RxSwift
 
 class TracksInFlightGetGateway<R, T: ResourceType>: GetGateway<R, T> {

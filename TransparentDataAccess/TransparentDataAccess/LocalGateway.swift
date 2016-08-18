@@ -1,12 +1,3 @@
-//
-//  LocalGateway.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 01/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
-import Foundation
 import RxSwift
 
 class LocalGateway<R, T: StorableType>: GetSetGateway<R, T> {
@@ -21,8 +12,10 @@ class LocalGateway<R, T: StorableType>: GetSetGateway<R, T> {
 
         if  resource != nil && !forceRefresh {
             return Observable.just(resource!)
+                .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         } else {
             return Observable.error(GatewayError.NoDataFor(key: resourceType.key))
+                .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         }
     }
 

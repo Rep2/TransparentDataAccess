@@ -1,31 +1,22 @@
-//
-//  CodingGateway.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 09/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
-import Foundation
 import RxSwift
-
-enum CodingGatewayStorables: StorableType {
-    case SearchQueries
-    case TestObject
-
-    var key: String {
-        switch self {
-        case .SearchQueries:
-            return "queries"
-        case .TestObject:
-            return "test_object"
-        }
-    }
-}
 
 enum CodingGatewayError: ErrorType {
     case NoDataForKey(key: String)
     case CodingFailed
+}
+
+extension CodingGatewayError: Equatable {
+}
+
+func == (lhs: CodingGatewayError, rhs: CodingGatewayError) -> Bool {
+    switch (lhs, rhs) {
+    case (.NoDataForKey(let x), .NoDataForKey(let y)):
+        return x == y
+    case (.CodingFailed, .CodingFailed):
+        return true
+    default:
+        return false
+    }
 }
 
 class CodingGateway<R: NSCoding, T: StorableType>: GetSetGateway<R, T> {

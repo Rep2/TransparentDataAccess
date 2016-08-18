@@ -1,12 +1,3 @@
-//
-//  KeychainGateway.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 01/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
-import Foundation
 import KeychainAccess
 import RxSwift
 
@@ -28,8 +19,10 @@ class KeychainGateway<R: Keychainable, T: StorableType>: GetSetGateway<R, T> {
 
         if resourceString != nil && !forceRefresh {
             return Observable.just(R(data: resourceString!))
+                .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         } else {
             return Observable.error(GatewayError.NoDataFor(key: resourceType.key))
+                .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         }
     }
 

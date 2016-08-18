@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  EducationalProjectIvanRep
-//
-//  Created by Undabot Rep on 03/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
 import Foundation
 
 func JSONResponseDataFormatter(data: NSData) -> NSData {
