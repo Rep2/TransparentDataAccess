@@ -81,6 +81,15 @@ class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
     }
 
     static func standartdTokenRefreshAction(gateway: WebGateway<R, T>, resourceType: T) -> Observable<R> {
-        return Observable.empty()
+        return // TODO refresh token
+
+            // Allows subclass preform updates
+            gateway.createProvider()
+                .flatMap({ (newProvider) -> Observable<R> in
+
+                    // Mapps Moya response to object with token refresh disabled
+                    return gateway.mapper.mapResponse(newProvider.request(resourceType), refreshesToken: false)
+                })
+
     }
 }

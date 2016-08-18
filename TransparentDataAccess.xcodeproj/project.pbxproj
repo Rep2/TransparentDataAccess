@@ -29,7 +29,6 @@
 		1C48B3181D52467B00D2F971 /* WebGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C48B3111D52467B00D2F971 /* WebGateway.swift */; };
 		1C79365F1D59CB13006351D1 /* CodingGatewayStorables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C79365E1D59CB13006351D1 /* CodingGatewayStorables.swift */; };
 		1C7936611D59CB6D006351D1 /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7936601D59CB6D006351D1 /* SearchQuery.swift */; };
-		1C7936631D59CB88006351D1 /* CodingGatewayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7936621D59CB88006351D1 /* CodingGatewayTest.swift */; };
 		1C8429F71D5085970025530A /* GitHubModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F61D5085970025530A /* GitHubModels.swift */; };
 		1C8429F91D5097090025530A /* ResourceTypeExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8429F81D5097090025530A /* ResourceTypeExample.swift */; };
 		1CA87EB91D65F8CB0000818B /* JSONResponseDataFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA87EB61D65F8CB0000818B /* JSONResponseDataFormater.swift */; };
@@ -78,7 +77,6 @@
 		1C48B3111D52467B00D2F971 /* WebGateway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebGateway.swift; sourceTree = "<group>"; };
 		1C79365E1D59CB13006351D1 /* CodingGatewayStorables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CodingGatewayStorables.swift; path = TransparentDataAccess/TransparentDataAccess/CodingGatewayStorables.swift; sourceTree = SOURCE_ROOT; };
 		1C7936601D59CB6D006351D1 /* SearchQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
-		1C7936621D59CB88006351D1 /* CodingGatewayTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodingGatewayTest.swift; sourceTree = "<group>"; };
 		1C8429F61D5085970025530A /* GitHubModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubModels.swift; sourceTree = "<group>"; };
 		1C8429F81D5097090025530A /* ResourceTypeExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTypeExample.swift; sourceTree = "<group>"; };
 		1CA87EB61D65F8CB0000818B /* JSONResponseDataFormater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONResponseDataFormater.swift; path = TransparentDataAccess/TransparentDataAccess/TestGateways/JSONResponseDataFormater.swift; sourceTree = SOURCE_ROOT; };
@@ -139,7 +137,6 @@
 				1C1EAD701D50BD8100A18F5C /* KeychainGatewayTest.swift */,
 				1C1EAD711D50BD8100A18F5C /* LocalGatewayTest.swift */,
 				1C1EAD721D50BD8100A18F5C /* WebGatewayTest.swift */,
-				1C7936621D59CB88006351D1 /* CodingGatewayTest.swift */,
 			);
 			path = GatewayTests;
 			sourceTree = "<group>";
@@ -480,7 +477,6 @@
 				1C1EAD7C1D50C0B100A18F5C /* CompositSetTest.swift in Sources */,
 				1C1EAD771D50BD8100A18F5C /* CompositLocalAndKeychainGatewayTest.swift in Sources */,
 				1C1EAD781D50BD8100A18F5C /* KeychainGatewayTest.swift in Sources */,
-				1C7936631D59CB88006351D1 /* CodingGatewayTest.swift in Sources */,
 				1C1EAD741D50BD8100A18F5C /* CompositeLocalAndWebTest.swift in Sources */,
 				1C1EAD761D50BD8100A18F5C /* CompositGatewayResultTest.swift in Sources */,
 				1C1EAD731D50BD8100A18F5C /* CompositeGatewayNumberOfCallsTest.swift in Sources */,
