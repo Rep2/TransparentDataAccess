@@ -13,7 +13,7 @@ enum ResourceTypeExample{
     case Token(key: String, secret: String)
 }
 
-extension ResourceTypeExample: ResourceType{
+extension ResourceTypeExample: StorableType{
     var key: String{
         switch self {
         case .EmptyTarget:

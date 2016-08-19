@@ -1,20 +1,21 @@
 import KeychainAccess
 import RxSwift
 
+/// Set to wanted walue
+let keychainServiceString = "undabot.TransparentDataAccess"
+
+/// Resource that can be stored and fetched using keychain gateway
 protocol Keychainable {
     init(data: String)
 
     func toString() -> String
 }
 
-let keychainServiceString = "undabot.TransparentDataAccess"
 let keychain = Keychain(service: keychainServiceString)
 
 class KeychainGateway<R: Keychainable, T: StorableType>: GetSetGateway<R, T> {
-    private let keychainKey = "TwitterAccessToken"
 
-    override func getResource(resourceType: T,
-                              forceRefresh: Bool = false) -> Observable<R> {
+    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
         let resourceString = keychain[resourceType.key]
 
         if resourceString != nil && !forceRefresh {

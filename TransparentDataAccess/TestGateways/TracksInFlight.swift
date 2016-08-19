@@ -1,6 +1,7 @@
 import RxSwift
+import Moya
 
-class TracksInFlightGetGateway<R, T: ResourceType>: GetGateway<R, T> {
+class TracksInFlightGetGateway<R, T where T:TargetType, T:StorableType>: GetGateway<R, T> {
 
     let gateway: GetGateway<R, T>
 

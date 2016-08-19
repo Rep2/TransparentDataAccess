@@ -22,11 +22,11 @@ class ResourceMapper: ResourceMapperProtocol {
                         // If status code is 401 and refreshesToken is disabled
                         // return PermisionDenied error
                         if response.statusCode == 401 && !refreshesToken {
-                            observer.onError(WebRequestError.PermissionDenied)
+                            observer.onError(GatewayError.PermissionDenied)
                         }
                         // Else propagate error
                         else {
-                            observer.onError(WebRequestError.HTTPError(code: response.statusCode))
+                            observer.onError(GatewayError.HTTPError(code: response.statusCode))
                         }
 
                     } else {
@@ -36,7 +36,7 @@ class ResourceMapper: ResourceMapperProtocol {
                             observer.onNext(resource)
                             observer.onCompleted()
                         } catch {
-                            observer.onError(WebRequestError.UnboxingError)
+                            observer.onError(GatewayError.UnboxingError)
                         }
                     }
 
@@ -47,7 +47,7 @@ class ResourceMapper: ResourceMapperProtocol {
 
                 switch error {
                 case Moya.Error.Underlying(let error):
-                    return .error(WebRequestError.SystemError(code: error.code,
+                    return .error(GatewayError.SystemError(code: error.code,
                         description: error.userInfo["NSLocalizedDescription"] as? String ?? ""))
                 default:
                     return .error(error)

@@ -2,47 +2,6 @@ import RxSwift
 import Moya
 import Unbox
 
-enum WebRequestError: ErrorType {
-    case HTTPError(code: Int)
-    case UnboxingError
-    case SystemError(code: Int, description: String)
-    case PermissionDenied
-    case NoDataReturned
-
-    var description: String {
-        switch self {
-        case .HTTPError(let code):
-            return "HTTP error with status code \(code)"
-        case .UnboxingError:
-            return "Error while mapping response body"
-        case .SystemError(_, let description):
-            return description
-        case .PermissionDenied:
-            return "Permission was denied"
-        case .NoDataReturned:
-            return "Request returned no data"
-        }
-    }
-}
-
-extension WebRequestError: Equatable {
-}
-
-func == (lhs: WebRequestError, rhs: WebRequestError) -> Bool {
-    switch (lhs, rhs) {
-    case (.HTTPError(let x), .HTTPError(let y)):
-        return x == y
-    case (.UnboxingError, .UnboxingError):
-        return true
-    case (.PermissionDenied, .PermissionDenied):
-        return true
-    case (.NoDataReturned, .NoDataReturned):
-        return true
-    default:
-        return false
-    }
-}
-
 class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
     var provider: RxMoyaProvider<T>!
     let mapper: ResourceMapperProtocol
@@ -65,8 +24,8 @@ class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
 
                     // Catch 401 errors and automaticaly tries to refresh token
                     .catchError({ (error) -> Observable<R> in
-                        if let tokenRefreshAction = self.tokenRefreshAction, error = error as? WebRequestError {
-                            if error == WebRequestError.HTTPError(code: 401) {
+                        if let tokenRefreshAction = self.tokenRefreshAction, error = error as? GatewayError {
+                            if error == GatewayError.HTTPError(code: 401) {
                                 return tokenRefreshAction(gateway: self, resourceType: resourceType)
                             }
                         }
@@ -81,8 +40,7 @@ class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
     }
 
     static func standartdTokenRefreshAction(gateway: WebGateway<R, T>, resourceType: T) -> Observable<R> {
-        return // TODO refresh token
-
+        return
             // Allows subclass preform updates
             gateway.createProvider()
                 .flatMap({ (newProvider) -> Observable<R> in
@@ -90,6 +48,5 @@ class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
                     // Mapps Moya response to object with token refresh disabled
                     return gateway.mapper.mapResponse(newProvider.request(resourceType), refreshesToken: false)
                 })
-
     }
 }

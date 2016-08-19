@@ -76,13 +76,13 @@ class CompositeErrorsTest: XCTestCase{
         
         let compositGateway = CompositGateway(gateways: [firstGateway, secondGateway])
         
-        var recievedError: WebRequestError?
+        var recievedError: GatewayError?
         
         waitUntil(action: { done in
             _ = compositGateway.getResource(type)
                 .subscribe(
                     onError: { (error) in
-                        if let error = error as? WebRequestError{
+                        if let error = error as? GatewayError{
                             recievedError = error
                         }
                     }, onDisposed: {
@@ -90,6 +90,6 @@ class CompositeErrorsTest: XCTestCase{
                 })
         })
         
-        expect(recievedError).to(equal(WebRequestError.HTTPError(code: 400)))
+        expect(recievedError).to(equal(GatewayError.HTTPError(code: 400)))
     }
 }

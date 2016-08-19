@@ -12,7 +12,7 @@ import RxSwift
 import Nimble
 @testable import TransparentDataAccess
 
-class LocalGatewayWithLogger<R, T:ResourceType>: LocalGateway<R, T>{
+class LocalGatewayWithLogger<R, T: StorableType>: LocalGateway<R, T>{
     var numberOfGetCalls = 0
     var numberOfSetCalls = 0
     

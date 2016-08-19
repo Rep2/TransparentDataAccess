@@ -14,7 +14,7 @@ public enum GitHub {
     case UserProfile(String)
 }
 
-extension GitHub: ResourceType {
+extension GitHub: TargetType, StorableType {
     public var baseURL: NSURL { return NSURL(string: "https://api.github.com")! }
     public var path: String {
         switch self {
@@ -38,6 +38,12 @@ extension GitHub: ResourceType {
         switch self {
         case .UserProfile(let name):
             return "{\"login\": \"\(name)\", \"id\": 100}".dataUsingEncoding(NSUTF8StringEncoding)!
+        }
+    }
+    var key: String {
+        switch self {
+        case .UserProfile(let name):
+            return name
         }
     }
 }

@@ -1,24 +1,5 @@
 import RxSwift
 
-enum CodingGatewayError: ErrorType {
-    case NoDataForKey(key: String)
-    case CodingFailed
-}
-
-extension CodingGatewayError: Equatable {
-}
-
-func == (lhs: CodingGatewayError, rhs: CodingGatewayError) -> Bool {
-    switch (lhs, rhs) {
-    case (.NoDataForKey(let x), .NoDataForKey(let y)):
-        return x == y
-    case (.CodingFailed, .CodingFailed):
-        return true
-    default:
-        return false
-    }
-}
-
 class CodingGateway<R: NSCoding, T: StorableType>: GetSetGateway<R, T> {
 
     override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
@@ -28,14 +9,15 @@ class CodingGateway<R: NSCoding, T: StorableType>: GetSetGateway<R, T> {
                     observer.onNext(resource)
                     observer.onCompleted()
                 } else {
-                    observer.onError(CodingGatewayError.CodingFailed)
+                    observer.onError(GatewayError.CodingFailed)
                 }
             } else {
-                observer.onError(CodingGatewayError.NoDataForKey(key: resourceType.key))
+                observer.onError(GatewayError.NoDataFor(key: resourceType.key))
             }
 
             return NopDisposable.instance
         })
+        .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
     }
 
     override func setResource(resourceType: T, resource: R) {

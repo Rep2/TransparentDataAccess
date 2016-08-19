@@ -32,12 +32,12 @@ class WebGatewayTest: XCTestCase {
     
     func test_UserProfile_NoUserError(){
         let target = GitHub.UserProfile("Rep2123121")
-        var recievedError: WebRequestError?
+        var recievedError: GatewayError?
         let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider())
         
         waitUntil(timeout: 30, action: { done in
             _ = gateway.getResource(target).subscribeError{ (error) in
-                if let error = error as? WebRequestError{
+                if let error = error as? GatewayError{
                     recievedError = error
                 }
                 
@@ -45,12 +45,12 @@ class WebGatewayTest: XCTestCase {
             }
         })
         
-        expect(recievedError).to(equal(WebRequestError.HTTPError(code: 404)))
+        expect(recievedError).to(equal(GatewayError.HTTPError(code: 404)))
     }
     
     func test_Error_HTTP400(){
         let target = GitHub.UserProfile("Rep2")
-        var recievedError: WebRequestError?
+        var recievedError: GatewayError?
         let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider.init(
             endpointClosure: { (target) -> Endpoint<GitHub> in
                 let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
@@ -59,7 +59,7 @@ class WebGatewayTest: XCTestCase {
         
         waitUntil(timeout: 30, action: { done in
             _ = gateway.getResource(target).subscribeError{ (error) in
-                if let error = error as? WebRequestError{
+                if let error = error as? GatewayError{
                     recievedError = error
                 }
                 
@@ -67,12 +67,12 @@ class WebGatewayTest: XCTestCase {
             }
         })
         
-        expect(recievedError).to(equal(WebRequestError.HTTPError(code: 400)))
+        expect(recievedError).to(equal(GatewayError.HTTPError(code: 400)))
     }
     
     func test_Error_HTTPPermisionDenied(){
         let target = GitHub.UserProfile("Rep2")
-        var recievedError: WebRequestError?
+        var recievedError: GatewayError?
         let gateway = WebGateway<UserProfile, GitHub>(provider: RxMoyaProvider.init(
             endpointClosure: { (target) -> Endpoint<GitHub> in
                 let url = target.baseURL.URLByAppendingPathComponent(target.path).absoluteString
@@ -81,7 +81,7 @@ class WebGatewayTest: XCTestCase {
         
         waitUntil(timeout: 30, action: { done in
             _ = gateway.getResource(target).subscribeError{ (error) in
-                if let error = error as? WebRequestError{
+                if let error = error as? GatewayError{
                     recievedError = error
                 }
                 
@@ -89,6 +89,6 @@ class WebGatewayTest: XCTestCase {
             }
         })
         
-        expect(recievedError).to(equal(WebRequestError.PermissionDenied))
+        expect(recievedError).to(equal(GatewayError.PermissionDenied))
     }
 }
