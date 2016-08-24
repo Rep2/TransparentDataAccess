@@ -26,6 +26,7 @@ enum GatewayError: ErrorType {
         case .CodingFailed:
             return "Resource coding failed"
         }
+
     }
 }
 

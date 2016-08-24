@@ -1,19 +1,9 @@
-//
-//  ResourceTypeExample.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 02/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
-import Foundation
-
-enum ResourceTypeExample{
+enum ResourceTargetExample{
     case EmptyTarget
     case Token(key: String, secret: String)
 }
 
-extension ResourceTypeExample: StorableType{
+extension ResourceTargetExample: StorableTarget{
     var key: String{
         switch self {
         case .EmptyTarget:

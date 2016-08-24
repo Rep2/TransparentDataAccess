@@ -1,4 +1,4 @@
-import Moya
+import Foundation
 
 extension String {
     var URLEscapedString: String {
@@ -8,8 +8,4 @@ extension String {
     var UTF8EncodedData: NSData {
         return self.dataUsingEncoding(NSUTF8StringEncoding)!
     }
-}
-
-public func url(route: TargetType) -> String {
-    return route.baseURL.URLByAppendingPathComponent(route.path).absoluteString
 }

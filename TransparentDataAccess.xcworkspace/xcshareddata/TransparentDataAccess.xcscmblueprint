@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7B1022AC8DCBB9FC8C9CEB942D13A9C1584F4E55",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7B1022AC8DCBB9FC8C9CEB942D13A9C1584F4E55" : 0,
+    "86F222E2E78505FCC1BDEB295F537874DCDE294B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D867FCB2-47F1-48FF-9E7C-BA09004736B8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7B1022AC8DCBB9FC8C9CEB942D13A9C1584F4E55" : "TransparentDataAccess\/",
+    "86F222E2E78505FCC1BDEB295F537874DCDE294B" : "EducationalProject\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "TransparentDataAccess",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "TransparentDataAccess.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Rep2\/TransparentDataAccess.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7B1022AC8DCBB9FC8C9CEB942D13A9C1584F4E55"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.trikoder.net:ivan.rep\/EducationalProject.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "86F222E2E78505FCC1BDEB295F537874DCDE294B"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
-import KeychainAccess
 import RxSwift
+import Simple_KeychainSwift
+import Unbox
 
 /// Set to wanted walue
 let keychainServiceString = "undabot.TransparentDataAccess"
@@ -11,23 +12,65 @@ protocol Keychainable {
     func toString() -> String
 }
 
-let keychain = Keychain(service: keychainServiceString)
+class KeychainGateway {
 
-class KeychainGateway<R: Keychainable, T: StorableType>: GetSetGateway<R, T> {
+    func getResource<Resource: Keychainable, Target: StorableTarget>(resourceTarget: Target, forceRefresh: Bool = false) -> Observable<Resource> {
+        let resourceKey = keychainServiceString + resourceTarget.key
 
-    override func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
-        let resourceString = keychain[resourceType.key]
+        let resourceValue = Keychain.value(forKey: resourceKey)
 
-        if resourceString != nil && !forceRefresh {
-            return Observable.just(R(data: resourceString!))
+        if resourceValue != nil && !forceRefresh {
+            return Observable.just(Resource(data: resourceValue!))
                 .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         } else {
-            return Observable.error(GatewayError.NoDataFor(key: resourceType.key))
+            return Observable.error(GatewayError.NoDataFor(key: resourceTarget.key))
                 .observeOn(ConcurrentDispatchQueueScheduler(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)))
         }
     }
 
-    override func setResource(resourceType: T, resource: R) {
-        keychain[resourceType.key] = resource.toString()
+    func setResource<Resource: Keychainable, Target: StorableTarget>(resourceTarget: Target, resource: Resource) {
+        Keychain.set(resource.toString(), forKey: keychainServiceString + resourceTarget.key)
+    }
+}
+
+struct CompositeGateway<Resource where Resource: Unboxable, Resource: Keychainable> {
+
+    var localGateway: LocalGateway<Resource>
+    let keychainGateway: KeychainGateway
+    let webGateway: WebGateway
+
+    init(localGateway: LocalGateway<Resource>, keychainGateway: KeychainGateway, webGateway: WebGateway) {
+        self.localGateway = localGateway
+        self.keychainGateway = keychainGateway
+        self.webGateway = webGateway
+    }
+
+    mutating func getResource<Target: ResourceTarget>(resourceTarget: Target, forceRefresh: Bool = false) -> Observable<Resource> {
+        if !forceRefresh {
+            return Observable
+            .of(
+                localGateway.getResource(resourceTarget)
+                    .catchError { error in
+                        return .empty()
+                },
+                keychainGateway.getResource(resourceTarget)
+                    .catchError { error in
+                        return .empty()
+                },
+                webGateway.getResource(resourceTarget)
+                    .doOnNext {
+                        self.localGateway.setResource(resourceTarget, resource: $0)
+                        self.keychainGateway.setResource(resourceTarget, resource: $0)
+                }
+            )
+            .merge()
+            .take(1)
+        } else {
+            return webGateway.getResource(resourceTarget)
+                .doOnNext {
+                    self.localGateway.setResource(resourceTarget, resource: $0)
+                    self.keychainGateway.setResource(resourceTarget, resource: $0)
+            }
+        }
     }
 }

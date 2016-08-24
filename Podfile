@@ -8,9 +8,8 @@ target 'TransparentDataAccess' do
   pod 'Alamofire', '~> 3.4'
   pod 'Unbox'
   pod 'RxSwift',    '~> 2.0'
-  pod 'Moya'
-  pod 'Moya/RxSwift'
-  pod 'KeychainAccess'
+  pod 'RxAlamofire'
+  pod 'Simple-KeychainSwift'
 
   target 'TransparentDataAccessTests' do
     inherit! :search_paths

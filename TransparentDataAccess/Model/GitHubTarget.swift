@@ -1,45 +1,38 @@
-//
-//  GitHubTarget.swift
-//  TransparentDataAccess
-//
-//  Created by Undabot Rep on 02/08/16.
-//  Copyright © 2016 Undabot. All rights reserved.
-//
-
 import RxSwift
-import Moya
 import Unbox
+import Alamofire
 
 public enum GitHub {
     case UserProfile(String)
 }
 
-extension GitHub: TargetType, StorableType {
-    public var baseURL: NSURL { return NSURL(string: "https://api.github.com")! }
+extension GitHub: WebTarget, StorableTarget {
+    static let baseURLString = "https://api.github.com"
+    static var OAuthToken: String?
+
     public var path: String {
         switch self {
         case .UserProfile(let name):
             return "/users/\(name.URLEscapedString)"
         }
     }
-    public var method: Moya.Method {
+
+    public var method: Alamofire.Method {
         return .GET
     }
-    public var parameters: [String: AnyObject]? {
+
+    public var URLRequest: NSMutableURLRequest {
+        print("reqeust")
+        let URL = NSURL(string: GitHub.baseURLString)!
+        let mutableURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        mutableURLRequest.HTTPMethod = method.rawValue
+
         switch self {
-        case .UserProfile:
-            return nil
+        case .UserProfile(_):
+            return Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0
         }
     }
-    public var multipartBody: [MultipartFormData]?{
-        return nil
-    }
-    public var sampleData: NSData {
-        switch self {
-        case .UserProfile(let name):
-            return "{\"login\": \"\(name)\", \"id\": 100}".dataUsingEncoding(NSUTF8StringEncoding)!
-        }
-    }
+
     var key: String {
         switch self {
         case .UserProfile(let name):

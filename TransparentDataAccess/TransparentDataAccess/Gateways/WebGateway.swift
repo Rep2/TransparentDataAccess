@@ -1,52 +1,104 @@
 import RxSwift
-import Moya
 import Unbox
+import Alamofire
+import RxAlamofire
 
-class WebGateway<R: Unboxable, T: TargetType>: GetGateway<R, T> {
-    var provider: RxMoyaProvider<T>!
-    let mapper: ResourceMapperProtocol
+struct WebGateway {
+    func getResource<Resource: Unboxable, Target: WebTarget>(resourceTarget: Target) -> Observable<Resource> {
+        let queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
-    let tokenRefreshAction: ((gateway: WebGateway<R, T>, resourceType: T) -> Observable<R>)?
+        return
+            Manager.sharedInstance
+                .rx_request(resourceTarget.URLRequest)
+                .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
+                .flatMap ({ request -> Observable<Resource> in
 
-    init(provider: RxMoyaProvider<T>? = RxMoyaProvider<T>(), mapper: ResourceMapperProtocol = ResourceMapper(),
-         tokenRefreshAction: ((gateway: WebGateway<R, T>, resourceType: T) -> Observable<R>)? = WebGateway.standartdTokenRefreshAction) {
-        self.provider = provider
-        self.mapper = mapper
+                    return request.unbox(queue)
+        })
+    }
+}
 
-        self.tokenRefreshAction = tokenRefreshAction
+struct WebGatewayWithRefresh {
+
+    let refreshAction: Observable<TwitterAccessToken>
+
+    let disposeBag = DisposeBag()
+
+    init(refreshAction: Observable<TwitterAccessToken>) {
+        self.refreshAction = refreshAction
     }
 
-    override final func getResource(resourceType: T, forceRefresh: Bool = false) -> Observable<R> {
-        return createProvider()
-            .flatMap({ (provider) -> Observable<R> in
-                // Mapps Moya response to object with token refresh enabled
-                return self.mapper.mapResponse(provider.request(resourceType), refreshesToken: true)
+    func getResource<Resource: Unboxable, Target: RefreshableTarget>(resourceTarget: Target, refreshToken: Bool = true) -> Observable<Resource> {
+        let queue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
 
-                    // Catch 401 errors and automaticaly tries to refresh token
-                    .catchError({ (error) -> Observable<R> in
-                        if let tokenRefreshAction = self.tokenRefreshAction, error = error as? GatewayError {
-                            if error == GatewayError.HTTPError(code: 401) {
-                                return tokenRefreshAction(gateway: self, resourceType: resourceType)
-                            }
+        return
+            Manager.sharedInstance
+                .rx_request(resourceTarget.URLRequest)
+                .subscribeOn(ConcurrentDispatchQueueScheduler(queue: queue))
+                .flatMap ({ request -> Observable<Resource> in
+
+                    return request.unbox(queue)
+                })
+                .catchError({ (error) -> Observable<Resource> in
+                    if refreshToken {
+                        return self.refreshAction
+                            .flatMap { refreshResource -> Observable<Resource> in
+                                return .empty()// TODO refersh token
                         }
+                    }
 
-                        return Observable.error(error)
-                    })
+                    return .error(error)
+                })
+    }
+}
+
+
+
+struct WebGatewayWithCaching<Resource: Unboxable> {
+
+    var localGateway: LocalGateway<Resource>
+    let webGateway: WebGateway
+
+    init(localGateway: LocalGateway<Resource>, webGateway: WebGateway) {
+        self.localGateway = localGateway
+        self.webGateway = webGateway
+    }
+
+    mutating func getResource<Target: ResourceTarget>(resourceTarget: Target) -> Observable<Resource> {
+        return Observable
+            .of(
+                localGateway.getResource(resourceTarget)
+                    .catchError { error in
+                        return .empty()
+                },
+                webGateway.getResource(resourceTarget)
+                    .doOnNext { self.localGateway.setResource(resourceTarget, resource: $0) }
+            )
+            .merge()
+            .take(1)
+    }
+}
+
+extension Request {
+
+    func unbox<R: Unboxable>(queue: dispatch_queue_t? = nil) -> Observable<R> {
+
+        return rx_result(queue: queue, responseSerializer: Request.dataResponseSerializer())
+            .flatMap({ (data) -> Observable<R> in
+
+                return Observable.create({ (observer) -> Disposable in
+                    do {
+                        let resource: R = try Unbox(data)
+
+                        observer.onNext(resource)
+                        observer.onCompleted()
+                    } catch {
+                        observer.onError(GatewayError.UnboxingError)
+                    }
+
+                    return NopDisposable.instance
+                })
             })
     }
 
-    func createProvider() -> Observable<RxMoyaProvider<T>> {
-        return Observable.just(provider)
-    }
-
-    static func standartdTokenRefreshAction(gateway: WebGateway<R, T>, resourceType: T) -> Observable<R> {
-        return
-            // Allows subclass preform updates
-            gateway.createProvider()
-                .flatMap({ (newProvider) -> Observable<R> in
-
-                    // Mapps Moya response to object with token refresh disabled
-                    return gateway.mapper.mapResponse(newProvider.request(resourceType), refreshesToken: false)
-                })
-    }
 }
